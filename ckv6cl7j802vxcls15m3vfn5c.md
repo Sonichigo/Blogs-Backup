@@ -1,8 +1,11 @@
 ---
 title: "Secure your WordPress Sites"
+seoTitle: "WordPress Security Tips"
+seoDescription: "Enhance WordPress security with SAWO Labs' plugin for easy integration and customizable authentication"
 datePublished: Mon Oct 25 2021 07:37:56 GMT+0000 (Coordinated Universal Time)
 cuid: ckv6cl7j802vxcls15m3vfn5c
 slug: secure-your-wordpress-sites
+canonical: https://blog.sonichigo.com/secure-your-wordpress-sites
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1635145699503/USfHeLWHj.png
 
 ---
