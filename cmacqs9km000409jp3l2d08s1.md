@@ -235,8 +235,34 @@ Liquibase is like the superhero sidekick you didn’t know you needed. It helps 
 
 If you’re a DB Admin tired of manual SQL chaos, it’s worth giving Liquibase a try. The [mux-sql project](https://github.com/Sonichigo/mux-sql/blob/main/liquibase.yml) shows just how clean and simple a YAML-based changelog can be. You’ve already got the skills - Liquibase just helps you use them smarter. So go ahead - set up that `liquibase.yml`, commit it to Git, and start managing your database like a boss.
 
+## ❓ FAQs
+
+### 1\. **Do I need to know Java to use Liquibase?**
+
+**Nope!** Liquibase is built in Java, but you don’t need to write any Java code to use it. You just need the Java Runtime Environment (JRE) installed to run the Liquibase CLI. Everything else like - YAML, SQL, or XML changelogs is what you already know.
+
+### 2\. **Can I use Liquibase with my existing database?**
+
+**Yes.** Liquibase can integrate with an existing database by using the `generateChangeLog` command to capture the current state. From there, you can start tracking future changes incrementally with changesets.
+
+### 3\. **What if I accidentally apply the wrong changeset?**
+
+That’s where **rollback** comes in. If you’ve defined a rollback block inside the changeset, you can undo changes safely using a simple command like:
+
+```bash
+liquibase rollbackCount 1
+```
+
+Without a defined rollback, you’ll need to handle it manually—but Liquibase will still show you what was applied and when.
+
+### 4\. **Can multiple developers work on the same changelog?**
+
+**Yes, but with structure.** Each developer should add their own changesets with unique `id`s and authors. Keeping changelogs in version control (like Git) and modularizing them with `include` files helps avoid merge conflicts.
+
 ## Further Resources
 
-* 📘 Liquibase includeAll Guide
+* 📘**Introducing Harness Database DevOps**
+    
+* 🤔**Automating Environment-Specific Verification Queries with Liquibase**
     
 * 💻 [mux-sql Liquibase Example](https://github.com/Sonichigo/mux-sql/blob/main/liquibase.yml)
