@@ -261,8 +261,8 @@ Without a defined rollback, you’ll need to handle it manually—but Liquibase 
 
 ## Further Resources
 
-* 📘**Introducing Harness Database DevOps**
+* 📘[**Introducing Harness Database DevOps**](https://www.harness.io/blog/introducing-harness-database-devops)
     
-* 🤔**Automating Environment-Specific Verification Queries with Liquibase**
+* 🤔[**Automating Environment-Specific Verification Queries with Liquibase**](https://www.harness.io/blog/automating-environment-specific-verification-queries-with-liquibase-and-harness-database-devops)
     
 * 💻 [mux-sql Liquibase Example](https://github.com/Sonichigo/mux-sql/blob/main/liquibase.yml)
