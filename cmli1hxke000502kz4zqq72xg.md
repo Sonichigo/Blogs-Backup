@@ -11,9 +11,9 @@ tags: opensource, databases, devops, software-engineering, ci-cd, liquibase, dat
 
 ---
 
-When I started formalizing Database DevOps practices, one recurring issue kept surfacing: **schema drift**.
+When I started formalizing [Database DevOps practices](https://www.harness.io/products/database-devops), one recurring issue kept surfacing: **schema drift**.
 
-Development was ahead of staging. Production had emergency hotfixes. QA sometimes had “just one small tweak” that never made it back to version control.Keeping schemas aligned across environments wasn’t just operational hygiene, it became foundational for reliability.
+Development was ahead of staging. Production had emergency hotfixes. QA sometimes had “just one small tweak” that never made it back to [version control](https://developer.harness.io/docs/database-devops/gitops/maintaining-database-schema). Keeping schemas aligned across environments wasn’t just operational hygiene, it became foundational for reliability.
 
 That’s where **Liquibase OSS** and specifically `diffChangelog` became a core part of my schema syncing strategy.
 
@@ -28,7 +28,7 @@ Because understanding the mechanics changes how confidently you automate it.
 
 ## The Schema Sync Problem
 
-In practice, schema syncing usually looks like one of these scenarios:
+In practice, [schema syncing](https://developer.harness.io/docs/database-devops/use-database-devops/schema-syncronisation) usually looks like one of these scenarios:
 
 * Dev schema contains new tables not yet in staging
     
@@ -58,14 +58,14 @@ Conceptually:
     
 * **Target database** → Actual schema
     
-* Output → ChangeLog needed to align target with reference
+* **Output** → ChangeLog needed to align target with reference
     
 
 But what’s happening under the hood?
 
-## How diffChangelog Actually Works
+## How diffChangelog Actually Works?
 
-The power of `diffChangelog` lies in Liquibase’s **snapshot engine**. It does not compare SQL files. It does not parse DDL text. Instead, it performs a structured, object-level comparison.
+The power of `diffChangelog` lies in [Liquibase’s **snapshot engine**](https://docs.liquibase.com/reference-guide/database-inspection-change-tracking-and-utility-commands/snapshot). It does not compare SQL files. It does not parse DDL text. Instead, it performs a structured, object-level comparison.
 
 ### Step 1: Snapshot Creation
 
@@ -163,7 +163,7 @@ If a datatype changed:
 
 The result is a deployable changelog that synchronizes the target schema.
 
-## How I Use This for Schema Syncing
+## How I Use This for Schema Syncing?
 
 Understanding the internal mechanics allows me to apply it confidently in real workflows.
 
@@ -185,7 +185,7 @@ This ensures production moves forward predictably.
 
 ### 2\. Drift Detection in CI
 
-I often run `diffChangelog` during CI to detect unauthorized drift :
+I often run [`diffChangelog`](https://developer.harness.io/docs/database-devops/use-database-devops/diff-changelog) during CI to detect unauthorized drift :
 
 1. Deploy known changelog to temp DB
     
@@ -242,11 +242,11 @@ This keeps comparisons focused and performant.
 
 ### Not Every Difference Should Be Deployed
 
-Auto-generated constraint names can differ across environments. Index naming strategies may vary. I always review generated changeLogs before applying them. Schema syncing is powerful but it must be deliberate.
+Auto-generated constraint names can [differ across environments](https://developer.harness.io/docs/database-devops/gitops/environment-by-branch). Index naming strategies may vary. I always review generated changeLogs before applying them. Schema syncing is powerful but it must be deliberate.
 
 ### Snapshots Enable Determinism
 
-The biggest realization for me was this - “`diffChangelog` is not comparing SQL text”. It is comparing structured schema models. That abstraction layer is what makes:
+The biggest realization for me was this - “`diffChangelog` is not [comparing SQL text](https://developer.harness.io/docs/database-devops/concepts-and-features/understanding-changelog-directories/organizing-sql-files)”. It is comparing structured schema models. That abstraction layer is what makes:
 
 * Cross-database comparison possible
     
@@ -301,5 +301,3 @@ When I think about database schema syncing today, I no longer see it as a manual
     
 
 `diffChangelog`, powered by snapshots, turns schema comparison into a structured, automatable workflow. And once I understood how it works internally, I stopped treating it as a convenience command and started treating it as a foundational component of my Database DevOps architecture.
-
-If environment parity matters to you, understanding this mechanism is not optional. It is strategic.
